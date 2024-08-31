@@ -1,5 +1,4 @@
-from operator import truediv
-
+# module_1_3.py
 name = ('Sergey')
 print ('Name:',name)
 age = 41
