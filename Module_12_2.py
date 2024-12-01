@@ -1,7 +1,5 @@
 import unittest
 
-from anyio.abc import value
-
 from rt_with_exceptions import Runner, Tournament
 
 # тесты не учитывают проверку бегунов с одинаковой скоростью,
