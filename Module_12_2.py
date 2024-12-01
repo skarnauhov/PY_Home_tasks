@@ -7,6 +7,7 @@ from rt_with_exceptions import Runner, Tournament
 
 
 class TournamentTest(unittest.TestCase):
+    is_frozen = True
 
     @classmethod
     def setUpClass(cls):
@@ -17,26 +18,30 @@ class TournamentTest(unittest.TestCase):
         self.runner_2 = Runner('Андрей', 12)
         self.runner_3 = Runner('Ник', 3)
 
+    @unittest.skipIf(is_frozen, 'Тесты в этом кейсе заморожены.')
     def test_1_tournament(self):
         t1 = Tournament(90, self.runner_1, self.runner_3)
         self.all_results['test_1'] = t1.start()
         self.assertTrue(self.all_results['test_1'][len(self.all_results['test_1'])] == 'Ник')
 
+    @unittest.skipIf(is_frozen, 'Тесты в этом кейсе заморожены.')
     def test_2_tournament(self):
         t2 = Tournament(90, self.runner_2, self.runner_3)
         self.all_results['test_2'] = t2.start()
         self.assertTrue(self.all_results['test_2'][len(self.all_results['test_2'])] == 'Ник')
 
+    @unittest.skipIf(is_frozen, 'Тесты в этом кейсе заморожены.')
     def test_3_tournament(self):
         t3 = Tournament(90, self.runner_1, self.runner_2, self.runner_3)
         self.all_results['test_3'] = t3.start()
         self.assertTrue(self.all_results['test_3'][len(self.all_results['test_3'])] == 'Ник')
 
+    @unittest.skipIf(is_frozen, 'Тесты в этом кейсе заморожены.')
     def test_4_tournament(self):
-        '''
+        """
         данный тест сравнивает список бегунов полученный в результате работы метода start класса Tournament
         и список бегунов полученный в результате сортировки бегунов по атрибуту: скорость бегуна
-        '''
+        """
         t4 = Tournament(90, self.runner_3, self.runner_2, self.runner_1)
         self.all_results['test_4'] = t4.start()
         list_1 = list(self.all_results['test_4'].values())
