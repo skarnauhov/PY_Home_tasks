@@ -1,0 +1,46 @@
+{% extends 'main.html'%}
+{% block crud_container %}
+
+    <section class="container-fluid">
+        <form method="post" action="/">
+            <div class="col-auto">
+                <div class="input-group-mb3">
+                    <input type="text" name="username" value="{{username}}" class="form-control"
+                    placeholder="Enter user name." aria-label="Enter user name." aria-describedby="button-addon2">
+                    <input type="text" name="age" value="{{age}}" class="form-control"
+                    placeholder="Enter user age." aria-label="Enter user age." aria-describedby="button-addon2">
+                    <button class="btn btn-outline-primary" type="submit" id="button-addon2"
+                    data-mdb-ripple-color="dark">
+                        Add
+                    </button>
+                </div>
+            </div>
+        </form>
+    </section>
+
+    {% if user %}
+        <article class="card container fluid">
+        <br>
+        <!-- Напишите свой код здесь (Вывод свойств объекта User) -->
+        <h2> ID: {{user.id}}</h2>
+            <p><strong>Username:</strong> {{user.username}}</p>
+            <p><strong>Age:</strong> {{user.age}}</p>
+        </article>
+    {% else %}
+            <section class="container-fluid">
+                <h2 align="center"> <strong>Users</strong> </h2>
+                <br>
+                <div class="card">
+                    <ul class="list-group list-group-flush">
+                        <!-- Напишите свой код здесь (перебор пользователей) -->
+                        {% for user in users %}
+                        <li class="list-group-item">
+                            <b>{{user.id}}.</b>
+                            <a href="/user/{{user.id}}"><i>{{user.username}}</i></a>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </section>
+    {% endif %}
+{% endblock %}
