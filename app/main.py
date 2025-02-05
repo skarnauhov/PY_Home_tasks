@@ -1,7 +1,7 @@
 from fastapi import FastAPI
 from routers.task import task_router
 from routers.user import user_router
-import schemas
+from models import *
 
 app = FastAPI()
 
@@ -11,3 +11,8 @@ async def welcome() -> dict:
 
 app.include_router(router=user_router)
 app.include_router(router=task_router)
+
+from sqlalchemy.schema import CreateTable
+
+print(CreateTable(Task.__table__))
+print(CreateTable(User.__table__))
